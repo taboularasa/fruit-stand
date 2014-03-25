@@ -11,11 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325164023) do
+ActiveRecord::Schema.define(version: 20140325185420) do
 
   create_table "apples", force: true do |t|
     t.string   "variety"
     t.integer  "juiciness_level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "cart_id"
+  end
+
+  create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140325164023) do
     t.integer  "sweetness_level"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "cart_id"
   end
 
 end
