@@ -5,18 +5,15 @@ class CheckoutForm < BaseForm
     @apples ||= cart.apples.any? ? cart.apples : [Apple.new]
   end
 
-  def apples
-    @apples ||= [Apple.new]
-  end
-
   def apple_forms
     @apple_forms ||= apples.map do |apple|
-      CheckoutForm::AppleForm.new(id: apple.id)
+      CheckoutForm::AppleForm.new(id: apple.id, cart_id: cart.id)
     end
   end
 
   def apple_forms_attributes=(attributes)
     @apple_forms ||= attributes.map do |_, apple_attributes|
+      apple_attributes.merge cart_id: cart.id
       CheckoutForm::AppleForm.new(apple_attributes)
     end
   end
@@ -27,12 +24,13 @@ class CheckoutForm < BaseForm
 
   def orange_forms
     @orange_forms ||= oranges.map do |orange|
-      CheckoutForm::OrangeForm.new(id: orange.id)
+      CheckoutForm::OrangeForm.new(id: orange.id, cart_id: cart.id)
     end
   end
 
   def orange_forms_attributes=(attributes)
     @orange_forms ||= attributes.map do |_, orange_attributes|
+      orange_attributes.merge cart_id: cart.id
       CheckoutForm::OrangeForm.new(orange_attributes)
     end
   end

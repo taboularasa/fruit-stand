@@ -1,5 +1,4 @@
 class CheckoutForm::OrangeForm < BaseForm
-
   attr_accessor :id
 
   validates :sweetness_level,
@@ -8,6 +7,14 @@ class CheckoutForm::OrangeForm < BaseForm
 
   validates :variety, presence: true
   validate :variety_type
+
+  def cart_id=(cart_id)
+    orange.cart_id = cart_id
+  end
+
+  def cart_id
+    orange.cart_id
+  end
 
   def sweetness_level
     orange.sweetness_level
@@ -30,13 +37,13 @@ class CheckoutForm::OrangeForm < BaseForm
   end
 
   def save
-    orange.update_attributes(attributes)
+    orange.save
   end
 
   private
 
   def variety_type
-    unless ["ambrosia", "bailey", "baldwin", "cameo"].include? variety
+    unless ["homosassa", "maltaise", "moro", "pera"].include? variety
       errors.add(:variety, "invalid variety")
     end
   end

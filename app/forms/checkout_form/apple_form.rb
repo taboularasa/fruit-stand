@@ -1,5 +1,4 @@
 class CheckoutForm::AppleForm < BaseForm
-
   attr_accessor :id
 
   validates :juiciness_level,
@@ -8,6 +7,14 @@ class CheckoutForm::AppleForm < BaseForm
 
   validates :variety, presence: true
   validate :variety_type
+
+  def cart_id=(cart_id)
+    apple.cart_id = cart_id
+  end
+
+  def cart_id
+    apple.cart_id
+  end
 
   def juiciness_level
     apple.juiciness_level
@@ -30,7 +37,8 @@ class CheckoutForm::AppleForm < BaseForm
   end
 
   def save
-    apple.update_attributes(attributes)
+    binding.pry
+    apple.save
   end
 
   private
