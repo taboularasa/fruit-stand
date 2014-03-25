@@ -1,8 +1,0 @@
-<%= form_for @checkout_form, url: checkout_path, html: { method: :put } do |form| %>
-  <h1>Apples</h1>
-  <%= form.fields_for :apple_forms do |apple_fields| %>
-    <%= apple_fields.label "variety" %>
-  <% end %>
-
-  <h1>Oranges</h1>
-<% end %>

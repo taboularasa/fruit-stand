@@ -1,4 +1,10 @@
 class CheckoutForm < BaseForm
+  attr_accessor :cart
+
+  def apples
+    @apples ||= cart.apples.any? ? cart.apples : [Apple.new]
+  end
+
   def apples
     @apples ||= [Apple.new]
   end
@@ -16,7 +22,7 @@ class CheckoutForm < BaseForm
   end
 
   def oranges
-    @oranges ||= [Orange.new]
+    @oranges ||= cart.oranges.any? ? cart.oranges : [Orange.new]
   end
 
   def orange_forms
@@ -40,6 +46,8 @@ class CheckoutForm < BaseForm
   end
 
   def save
+    return false unless valid?
+
     # groups of forms can be processed individually if needed
     children_forms.each(&:save)
   end

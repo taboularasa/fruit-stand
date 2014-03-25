@@ -1,3 +1,3 @@
 FruitStand::Application.routes.draw do
-  resources :checkout, only: [:show, :update]
+  resources :checkout, only: [:edit, :update]
 end

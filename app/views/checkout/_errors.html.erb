@@ -1,0 +1,11 @@
+<% binding.pry %>
+<% if object.errors.any? %>
+   <div class="alert alert-error">
+     <span>Please correct the following errors:</span>
+     <ul>
+       <% object.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+     </ul>
+   </div>
+ <% end %>

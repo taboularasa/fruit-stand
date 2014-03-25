@@ -1,0 +1,23 @@
+<%= form_for checkout_form, url: checkout_path, html: { method: :put } do |form| %>
+  <h1>Apples</h1>
+  <%= form.fields_for :apple_forms do |apple_fields| %>
+    <%= render partial: "errors", locals: { object: apple_fields.object } %>
+    <%= apple_fields.label :variety %>
+    <%= apple_fields.text_field :variety %>
+    <br>
+    <%= apple_fields.label :juiciness_level %>
+    <%= apple_fields.text_field :juiciness_level %>
+  <% end %>
+
+  <h1>Oranges</h1>
+  <%= form.fields_for :orange_forms do |orange_fields| %>
+    <%= render partial: "errors", locals: { object: orange_fields.object } %>
+    <%= orange_fields.label :variety %>
+    <%= orange_fields.text_field :variety %>
+    <br>
+    <%= orange_fields.label :sweetness_level %>
+    <%= orange_fields.text_field :sweetness_level %>
+  <% end %>
+  <br>
+  <button type="submit">Process Order</button>
+<% end %>
