@@ -1,28 +1,17 @@
-== README
+# when to use a form object
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- multi-model forms wihout a clear parent model (consider nested attributes if there is a clear object hierarchy)
+- multiple interfaces
+- operating on same object in differnet ways
+- you find the need for conditional validations in models
 
-Things you may want to cover:
+# pros
 
-* Ruby version
+- better controll over the attributes that your form collects
+- better adapt to complicated UI
 
-* System dependencies
+# cons
 
-* Configuration
+- nested forms boilerplate
+- duplication (validations, attributes)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
